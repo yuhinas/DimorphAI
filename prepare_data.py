@@ -36,7 +36,7 @@ sd_tesri = pd.read_csv('./data/prepare-data/sd_data_from_tesri.csv')
 sm_tesri = pd.read_csv('./data/prepare-data/sm_data_from_tesri.csv')
 
 ## load elevational-related features of sexually dimorphic species 
-feature_df = pd.read_csv('./data/select-elevational-related-features/stat_m_sd_124_.csv')
+feature_df = pd.read_csv('./data/select-elevational-related-features/select-elevational-related-features_sd_124.csv')
 feature_list = np.unique(feature_df['feature'])
 feature_list = [str(x) for x in feature_list]
 
