@@ -24,7 +24,7 @@ This folder contains three scripts and four CSV files for processing thermal cam
 ## ./main_vsc.py
 This script can train the VSC model. The example of training images are deposited in `./model/dataset256_demo/`. The trained model deposit in `./model/model_local_epoch_10000_iter_0.pth`
 ## ./prepare_data.py
-This script can calculate the distance between sexes, the median elevation and the elevational range size of each species. It also merges the data of 512-D extracted features to do subsequent analysis. The series of data are deposited in `./data/prepare-data`. 
+This script can calculate the distance between sexes, the median elevation and the elevational range size of each species. It also merges the data of 512-D extracted features to do subsequent analysis. The series of data are deposited in `./data/prepare-data/`. 
 ## ./any_code_trend.py
 This script can generate images with the VSC model with elevation in both sexes of sexually dimorphic or monomorphic species. The images are deposited in `./model/generated-image-along-elevation/`.
 ## ./decoding_vsc.py
@@ -32,6 +32,6 @@ This script can generate the images from 512-D extracted features. The example i
 ## ./encoding_vsc_repeatN.py
 This script can extract 512-D features from images. The results are deposited in `./model/encode/`.
 ## ./grid_explore_vsc_dimensions.py
-This script can visualize 512-D features. You need to run `./dim_hist_sampling.py` first to get the changes in values of each feature dimension. The results deposited in `./model/feature_viz/`
+This script can visualize each feature dimension of 512-D features. You need to run `./dim_hist_sampling.py` first to get the changes in values of each feature dimension. The results are deposited in `./model/feature_viz/`
 
 
