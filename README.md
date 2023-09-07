@@ -20,7 +20,7 @@ This folder contains a series of scripts that can quantify the generated images 
 This folder contains three scripts and four CSV files for processing thermal camera images:
 - Script `01-seq.R` can covert SEQ files for thermal camera images into npy files for python
 - Script `02-moth_thermal_masking.ipynb`
-- Script `03-plot.R` can plot with CSV file, include `thermal_plot_me_with_metadata_cold_FW.csv` `thermal_plot_me_with_metadata_cold_HW.csv` `thermal_plot_me_with_metadata_cold_LW.csv` and `thermal_plot_me_with_metadata_cold_RW.csv` for visualization. 
+- Script `03-plot.R` can plot with CSV file, include `thermal_plot_me_with_metadata_cold_FW.csv`, `thermal_plot_me_with_metadata_cold_HW.csv`, `thermal_plot_me_with_metadata_cold_LW.csv` and `thermal_plot_me_with_metadata_cold_RW.csv` for visualization. 
 ## ./main_vsc.py
 This script can train the VSC model. The example of training images are deposited in `./model/dataset256_demo/`. The trained model deposit in `./model/model_local_epoch_10000_iter_0.pth`
 ## ./prepare_data.py
