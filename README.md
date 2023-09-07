@@ -22,7 +22,7 @@ This folder contains three scripts and four CSV files for processing thermal cam
 - Script `02-moth_thermal_masking.ipynb`
 - Script `03-plot.R` can plot with CSV file, include `thermal_plot_me_with_metadata_cold_FW.csv`, `thermal_plot_me_with_metadata_cold_HW.csv`, `thermal_plot_me_with_metadata_cold_LW.csv` and `thermal_plot_me_with_metadata_cold_RW.csv` for visualization. 
 ## ./main_vsc.py
-This script can train the VSC model. The example of training images are deposited in `./model/dataset256_demo/`. The trained model deposit in `./model/model_local_epoch_10000_iter_0.pth`
+This script can train the VSC model. The metadata of training images is deposited in `./model/sp_all.csv`. The example of training images are deposited in `./model/dataset256_demo/`. The trained model is deposited in `./model/model_local_epoch_10000_iter_0.pth`
 ## ./prepare_data.py
 This script can calculate the distance between sexes, the median elevation and the elevational range size of each species. It also merges the data of 512-D extracted features to do subsequent analysis. The series of data are deposited in `./data/prepare-data/`. 
 ## ./any_code_trend.py
