@@ -44,3 +44,59 @@ for(col in y_feature_list){
     
 }
 
+
+### 交互作用模型
+X_sd = fread('./photo_quantify_sd.csv')
+X_sd$Groups = 'sd'
+X_sm = fread('./photo_quantify_sm.csv')
+X_sm$Groups = 'sm'
+
+X = rbind(X_sd, X_sm)
+X$Alt = X$Alt*600
+
+model <- lm(`Mean brightness` ~ Alt * Sex * Groups, data = X)
+summary(model)
+
+model <- lm(`Mean brightness` ~ Alt * Sex, data = X_sd)
+summary(model)
+
+model <- lm(`Mean brightness` ~ Alt * Sex, data = X_sm)
+summary(model)
+
+model <- lm(`Mean brightness` ~ Alt * Groups, data = X[X$Sex == 'male'])
+summary(model)
+
+model <- lm(`Mean brightness` ~ Alt * Groups, data = X[X$Sex == 'female'])
+summary(model)
+
+######### 
+model <- lm(`Contrast` ~ Alt * Sex * Groups, data = X)
+summary(model)
+
+model <- lm(`Contrast` ~ Alt * Sex, data = X_sd)
+summary(model)
+
+model <- lm(`Contrast` ~ Alt * Sex, data = X_sm)
+summary(model)
+
+model <- lm(`Contrast` ~ Alt * Groups, data = X[X$Sex == 'male'])
+summary(model)
+
+model <- lm(`Contrast` ~ Alt * Groups, data = X[X$Sex == 'female'])
+summary(model)
+
+##########
+model <- lm(`Relative size of dark patches of FW` ~ Alt * Sex * Groups, data = X)
+summary(model)
+
+model <- lm(`Relative size of dark patches of FW` ~ Alt * Sex, data = X_sd)
+summary(model)
+
+model <- lm(`Relative size of dark patches of FW` ~ Alt * Sex, data = X_sm)
+summary(model)
+
+model <- lm(`Relative size of dark patches of FW` ~ Alt * Groups, data = X[X$Sex == 'male'])
+summary(model)
+
+model <- lm(`Relative size of dark patches of FW` ~ Alt * Groups, data = X[X$Sex == 'female'])
+summary(model)

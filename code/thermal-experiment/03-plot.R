@@ -12,8 +12,8 @@ source('00-setting.R')
 ## RW: Right wings
 
 ############################
-#### load metadata
-X <- fread('./metadata/thermal_plot_me_with_metadata_cold_FW.csv')
+#### load data
+X <- fread('./thermal_plot_me_with_metadata_cold_FW.csv')
 ############################
 X_all_model = X[X$Species == 'model']
 X_process = X_all_model
@@ -34,7 +34,7 @@ for (st in sex_type_list) {
   lm_plot = ggplot(X_process_, aes(x,y, color = Sex))+
     geom_point() +
     geom_smooth(method=lm, aes(linetype=Sex)) +
-    labs(y = col_, x = 'Elevation')+ ylim(5,21)+
+    labs(y = 'Increased temperature', x = 'Elevation')+ ylim(5,21)+
     scale_linetype_manual(values=linetype_list)+
     stat_cor(aes(label = paste(..rr.label.., ..p.label..,sep = "*`,`~")),
                 label.x.npc = "centre", label.y.npc = 'bottom')+
@@ -43,23 +43,59 @@ for (st in sex_type_list) {
   path_ = paste0('./plot/', 'model_',st, '_avg_diff_.pdf')
   ggsave(path_, plot = lm_plot, width = 7, height = 7)
       
-}  
+} 
+
+### 交互作用模型
+## sm female vs sd female
+X_process = X_all_model[X_all_model$Sex == 'female']
+X_process$Alt_groups = X_process$Alt_groups*600
+
+model <- lm(avg_diff ~  Alt_groups* Groups, data = X_process)
+summary(model)
+
+## sm male vs sd male
+X_process = X_all_model[X_all_model$Sex == 'male']
+X_process$Alt_groups = X_process$Alt_groups*600
+
+model <- lm(avg_diff ~  Alt_groups* Groups, data = X_process)
+summary(model)
+
+## sm female vs sm male
+X_process = X_all_model[X_all_model$Groups == 'sm']
+X_process$Alt_groups = X_process$Alt_groups*600
+
+model <- lm(avg_diff ~  Alt_groups* Sex, data = X_process)
+summary(model)
+
+## sd female vs sd male
+X_process = X_all_model[X_all_model$Groups == 'sd']
+X_process$Alt_groups = X_process$Alt_groups*600
+
+model <- lm(avg_diff ~  Alt_groups* Sex, data = X_process)
+summary(model)
+
+## all
+X_process = X_all_model
+X_process$Alt_groups = X_process$Alt_groups*600
+
+model <- lm(avg_diff  ~ Alt_groups * Sex * Groups , data = X_process)
+summary(model)
 
 ##########################################################
 ## Control groups
 #############################
 ## load data
 
-X_FW = fread('./metadata/thermal_plot_me_with_metadata_cold_FW.csv')
+X_FW = fread('./thermal_plot_me_with_metadata_cold_FW.csv')
 X_FW$wing_class = 'FW'
 
-X_HW = fread('./metadata/thermal_plot_me_with_metadata_cold_HW.csv')
+X_HW = fread('./thermal_plot_me_with_metadata_cold_HW.csv')
 X_HW$wing_class = 'HW'
 
-X_LW = fread('./metadata/thermal_plot_me_with_metadata_cold_LW.csv')
+X_LW = fread('./thermal_plot_me_with_metadata_cold_LW.csv')
 X_LW$wing_class = 'LW'
 
-X_RW = fread('./metadata/thermal_plot_me_with_metadata_cold_RW.csv')
+X_RW = fread('./thermal_plot_me_with_metadata_cold_RW.csv')
 X_RW$wing_class = 'RW'
 
 X_all_FW_HW = rbind(X_FW, X_HW)
