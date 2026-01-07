@@ -5,11 +5,18 @@ The repository encompasses code for the preprocessing of raw files, the training
 
 ## ./data/thermal-experiment/
 Artificial moths printed on paper for absorption experiments, including model-generated images and their silhouettes for use in control groups.
+
+## ./data/female_choice_on_male_wing_brightness_experiment/
+Males with experimentally reduced wing brightness (via rutin application) and untreated control males were paired with a virgin female in controlled mate-choice trials to test whether male wing brightness influences mating success through female preference.
+
 ## ./code/analysis-in-R/
 This folder contains scripts for other analyses in R.
 - Script `01-select-elevational-related-features.R` can select the elevational-related features in sexually dimorphic or monomorphic species. 
 - Script `02-the-relationship-between-sexual-dimorphism-and-elevation.R` can find the relationship between sexual dimorphism and elevation in sexually dimorphic species. The output csv files deposited in `./data/select-elevational-related-features`
 - Script `03-the-relationship-between-elevation-and-temperature.R` can find the relationship between elevation and temperature with worldclim2 data.
+
+## ./code/female_choice_on_male_wing_brightness_experiment/
+This folder contains the R script for the female choice on male wing brightness experiment analyses.
 
 ## ./code/quantify-moth-trait/
 This folder contains a series of scripts that can quantify the generated images to describe the visual appearances.
